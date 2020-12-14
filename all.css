@@ -1,0 +1,16 @@
+body{background-image:url('https://sun9-4.userapi.com/c858216/v858216233/ee36f/vVzRe_KX69o.jpg')}
+footer{background-size:100% 100%;background-image:url('https://sun9-43.userapi.com/c853424/v853424130/136a0d/VwPKAFGyl8A.jpg')}
+header,h1,footer{opacity:.9}
+header img{height:2rem}
+h1.alert{margin-bottom:0}
+main{padding:2%;min-height:66vh}
+/* h1{width:100%;color:#5A7194;font-family:MetaMediumCapsLFCRegular} */
+/* main h1{margin-bottom:3%;font-weight:bold} */
+@media (min-width:576px){h1{letter-spacing:.5vw}}
+@media (max-width:575.98px){h1{font-size:1.75rem}.table-responsive-sm{display:block;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+@media (max-width:404px){header a.btn{font-size:.7rem}}
+@media (min-width:992px){header,footer{padding-left:8%;padding-right:8%}h1,main{margin-left:8%;margin-right:8%}}
+/* .h-2{height:2rem} */
+.badge{font-size:1em}
+/* .card s{margin-right:5%}
+.card big{margin-left:5%} */
