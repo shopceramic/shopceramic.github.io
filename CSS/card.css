@@ -1,9 +1,0 @@
-.duration-2000{-webkit-animation-duration:2s;animation-duration:2s}
-.flip{-webkit-animation-name:flip;animation-name:flip}@keyframes flip{from{-webkit-transform:perspective(400px) rotateY(-360deg) scale3d(1,1,1);transform:perspective(400px) rotateY(-360deg) scale3d(1,1,1);-webkit-animation-timing-function:cubic-bezier(0.25,0.46,0.45,0.94);animation-timing-function:cubic-bezier(0.25,0.46,0.45,0.94)}50%{-webkit-transform:perspective(400px) rotateY(-180deg) scale3d(1.2,1.2,1.2);transform:perspective(400px) rotateY(-180deg) scale3d(1.2,1.2,1.2);-webkit-animation-timing-function:cubic-bezier(0.25,0.46,0.45,0.94);animation-timing-function:cubic-bezier(0.25,0.46,0.45,0.94)}to{-webkit-transform:perspective(400px) rotateY(0deg) scale3d(1,1,1);transform:perspective(400px) rotateY(0deg) scale3d(1,1,1);-webkit-animation-timing-function:cubic-bezier(0.95,0.05,0.795,0.035);animation-timing-function:cubic-bezier(0.95,0.05,0.795,0.035)}}
-/* @media (max-width:1199px){main .card-img-overlay{padding:.25rem}} */
-@media (min-width:450px){main .card{font-size:1.1rem}}
-@media (max-width:449px){main .card-header{padding:.25rem}main .card h5{font-size:.9rem}}
-/* main .card-img-top{height:15rem} */
-main .card-body input{max-width:40%;height:2.5rem}
-.card-img-overlay{height:2rem}
-/* main big{height:2rem} */
