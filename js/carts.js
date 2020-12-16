@@ -22,11 +22,7 @@ const events =()=> tbody.childNodes.forEach((tr,i)=>{
   };
   btn[1].onclick =()=>{ F.btn(btn[1]); carts[i][0] += 1; minusplus() };
   tr.lastChild.onclick =()=>{
-    if(carts.length == 1){
-      none(); cart1.textContent = 0;
-      cart1.classList.remove('badge-success'); cart1.classList.add('badge-warning');
-      delete sessionStorage.cart; return
-    }
+    if(carts.length == 1) return cartDel();
     carts.splice(i,1); tr.remove();
     tbody.childNodes.forEach((tr,i)=> tr.children[0].textContent = i+1)
     add(); events()
@@ -36,6 +32,11 @@ add =()=>{
   let total = 0;
   for(let sum of tbody.getElementsByTagName('big')){ total += +sum.textContent }
   result.textContent = total; F.cartHead(carts); F.write(carts)
+},
+cartDel =()=>{
+  none(); cart1.textContent = 0;
+  cart1.classList.remove('badge-success'); cart1.classList.add('badge-warning');
+  delete sessionStorage.cart; return
 },
 checkTel =()=>{
   if(!tel.value) tel.value = '+7(';
@@ -50,16 +51,34 @@ events();
 document.querySelectorAll('main a').forEach(a => a.onclick =()=>{ window.open(a.href); return false })
 contin.onclick =()=>{
   if(document.scripts.length == 4) F.script('//code-ya.jivosite.com/widget/ZCCoipNRaL');
+  (()=>{
+    let link = document.createElement('link');
+    link.type = 'text/css'; link.rel='stylesheet'; link.href = '/css/unfold.css';
+    document.head.append(link)
+  })();
   main.insertAdjacentHTML('beforeEnd', [["Контактное лицо","<input id='nam'","30'/>"],["Конт. номер телефона","<input type='tel' id='tel'","16'/>"],["Адрес доставки","<textarea id='address' rows='4'","300'></textarea>"],["Комментарий","<textarea id='comment' rows='4'","300' placeholder='Необязательное поле'></textarea>"]].reduce((sum,ar)=> `${sum}<div class='col-sm-6 p-4 shadow-sm'><h6 class='alert alert-info'>${ar[0]}</h6>${ar[1]} class='form-control' maxlength='${ar[2]}</div>`,"<div class='row'>")+'</div>')
   contin.textContent = 'Заказать';
   if('onkeyup' in window){ tel.onfocus = checkTel; tel.onblur =()=>{ if(tel.value == '+7(') tel.value = '' } }
   contin.onclick =()=>{
-    jivo_api.setCustomData([
-      {"title": "Имя","content": "Контактное лицо"},
-      {"title": "Телефоон","content": "Конт. номер телефона"},
-      {"title": "Адрес","content": "Адрес доставки"},
-      {"title": "Комментарий","content": "Комментарий"},
-      {"title": "Общая сумма заказа","content": "333333"}
-   ]);
+    let arr = [nam.value,tel.value,address.value];
+    if(arr.includes('')){
+      let div = document.createElement('div');
+      div.innerHTML = "<h3 class='position-absolute alert alert-danger unfold duration-500'>Заполните все поля !</h3>"
+      contin.before(div);
+      setTimeout(()=>{
+        div.children[0].classList.remove('unfold'); div.children[0].classList.add('fold')
+      },1500);
+      setTimeout(()=> div.remove(),2000); return
+    }
+    let mes = carts.reduce((str,ar,i)=> str+`${i+1}. ${ar[1]} ${ar[0]}шт ${ar[2]}р\n`,'')+'Адрес: '+address.value;
+    if(comment.value) mes += '\nКомментарий: '+comment.value;
+    let apiResult = jivo_api.sendOfflineMessage({
+      "name": arr[0],
+      "phone": arr[1],
+      "description": main.getElementsByTagName('tfoot')[0].textContent,
+      "message": mes
+    });
+    if(apiResult.result !== 'ok') return alert('Заказ не обработан');
+    cartDel(); main.insertAdjacentHTML('beforeEnd',"<h3 class='mt-5 alert alert-info text-center unfold duration-1500'>Заказ принят.<br><br><br><br>В случае необходимости менеджер свяжется с Вами.</h3>")
   }
 };
