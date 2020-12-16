@@ -49,8 +49,7 @@ checkTel =()=>{
 events();
 document.querySelectorAll('main a').forEach(a => a.onclick =()=>{ window.open(a.href); return false })
 contin.onclick =()=>{
-  alert(document.scripts.length)
-  if(document.scripts.length == 3) F.script('//code-ya.jivosite.com/widget/ZCCoipNRaL');
+  if(document.scripts.length == 4) F.script('//code-ya.jivosite.com/widget/ZCCoipNRaL');
   main.insertAdjacentHTML('beforeEnd', [["Контактное лицо","<input id='nam'","30'/>"],["Конт. номер телефона","<input type='tel' id='tel'","16'/>"],["Адрес доставки","<textarea id='address' rows='4'","300'></textarea>"],["Комментарий","<textarea id='comment' rows='4'","300' placeholder='Необязательное поле'></textarea>"]].reduce((sum,ar)=> `${sum}<div class='col-sm-6 p-4 shadow-sm'><h6 class='alert alert-info'>${ar[0]}</h6>${ar[1]} class='form-control' maxlength='${ar[2]}</div>`,"<div class='row'>")+'</div>')
   contin.textContent = 'Заказать';
   if('onkeyup' in window){ tel.onfocus = checkTel; tel.onblur =()=>{ if(tel.value == '+7(') tel.value = '' } }
