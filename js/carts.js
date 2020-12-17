@@ -70,7 +70,7 @@ contin.onclick =()=>{
       },1500);
       setTimeout(()=> div.remove(),2000); return
     }
-    let mes = carts.reduce((str,ar,i)=> str+`${i+1}. ${ar[1]} ${ar[0]}шт ${ar[2]}р\n`,'')+'Адрес: 'arr[2];
+    let mes = carts.reduce((str,ar,i)=> str+`${i+1}. ${ar[1]} ${ar[0]}шт ${ar[2]}р\n`,'')+'Адрес: '+arr[2];
     if(comment.value) mes += '\nКомментарий: '+comment.value;
     let apiResult = jivo_api.sendOfflineMessage({
       "name": arr[0],
