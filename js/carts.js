@@ -50,7 +50,7 @@ checkTel =()=>{
 events();
 document.querySelectorAll('main a').forEach(a => a.onclick =()=>{ window.open(a.href); return false })
 contin.onclick =()=>{
-  if(document.scripts.length == 4) F.script('//code-ya.jivosite.com/widget/ZCCoipNRaL');
+  F.btn(contin); if(document.scripts.length == 4) F.script('//code-ya.jivosite.com/widget/ZCCoipNRaL');
   (()=>{
     let link = document.createElement('link');
     link.type = 'text/css'; link.rel='stylesheet'; link.href = '/css/unfold.css';
@@ -60,7 +60,7 @@ contin.onclick =()=>{
   contin.textContent = 'Заказать';
   if('onkeyup' in window){ tel.onfocus = checkTel; tel.onblur =()=>{ if(tel.value == '+7(') tel.value = '' } }
   contin.onclick =()=>{
-    let arr = [nam.value,tel.value,address.value];
+    F.btn(contin); let arr = [nam.value,tel.value,address.value];
     if(arr.includes('')){
       let div = document.createElement('div');
       div.innerHTML = "<h3 class='position-absolute alert alert-danger unfold duration-500'>Заполните все поля !</h3>"
@@ -70,7 +70,7 @@ contin.onclick =()=>{
       },1500);
       setTimeout(()=> div.remove(),2000); return
     }
-    let mes = carts.reduce((str,ar,i)=> str+`${i+1}. ${ar[1]} ${ar[0]}шт ${ar[2]}р\n`,'')+'Адрес: '+address.value;
+    let mes = carts.reduce((str,ar,i)=> str+`${i+1}. ${ar[1]} ${ar[0]}шт ${ar[2]}р\n`,'')+'Адрес: 'arr[2];
     if(comment.value) mes += '\nКомментарий: '+comment.value;
     let apiResult = jivo_api.sendOfflineMessage({
       "name": arr[0],
