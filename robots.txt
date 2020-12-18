@@ -1,0 +1,18 @@
+User-agent: *
+Disallow: /cart/
+Disallow: /privacy/
+Disallow: /agreement/
+Crawl-Delay: 0.1
+
+User-agent: GoogleBot
+Disallow: /cart/
+Disallow: /privacy/
+Disallow: /agreement/
+
+User-agent: Yandex
+Disallow: /cart/
+Disallow: /privacy/
+Disallow: /agreement/
+
+sitemap: https://shopceramic.github.io/sitemap.xml
+Host: https://shopceramic.github.io/
