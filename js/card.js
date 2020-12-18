@@ -5,7 +5,7 @@ for(let card of document.querySelectorAll('main .card')){
   let a = card.getElementsByTagName('a')[0];
   a.onclick =()=>{ window.open(a.href); return false }
   card.getElementsByTagName('input')[0].onclick = function(){
-    F.cartAdd(this,[1,card.getElementsByClassName('card-header')[0].textContent,+card.getElementsByTagName('h5')[0].textContent.replace(/\D/g,''),decodeURI(a.pathname),card.getElementsByTagName('img')[0].src])
+    F.cartAdd(this,[1,card.getElementsByClassName('card-header')[0].textContent,+card.getElementsByTagName('h5')[0].textContent.replace(/\D/g,''),decodeURI(a.pathname)])
   }
   card.addEventListener(onmt[0],flip);
 }
